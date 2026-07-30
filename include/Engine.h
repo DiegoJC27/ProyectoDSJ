@@ -2,19 +2,25 @@
 #include "raylib.h"
 #include <vector>
 #include "resource_dir.h"	// utility header for SearchAndSetResourceDir
-#include "Ball.h"
+#include "Menu.h"
+#include "Play.h"
+#include "SceneManager.h"
+#include <iostream>
+#include <string>
 
-
-class Engine
-{
-public:
-	Engine();
-	void Initialize();
-	void Run();
-	void ShutDown();
-private: 
-	void Update();
-	void Draw();
-	std::vector<Ball*>* ballsVector;
-	int ballQuantity;
-};
+namespace engPro {
+	class Engine
+	{
+	public:
+		Engine();
+		void Initialize();
+		void Run();
+		void ShutDown();
+	private:
+		void Update();
+		void Draw();
+		engPro::Menu menuScene;
+		engPro::Play playScene;
+		engPro::SceneManager sceneManager;
+	};
+}

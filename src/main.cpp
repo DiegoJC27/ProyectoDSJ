@@ -11,7 +11,7 @@ by Jeffery Myers is marked with CC0 1.0. To view a copy of this license, visit h
 
 int main ()
 {
-	Engine engine;
+	engPro::Engine engine;
 	
 	engine.Initialize();
 

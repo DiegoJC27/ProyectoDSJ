@@ -1,9 +1,9 @@
 #include "Ball.h"
 
 Ball::Ball(Vector2 iniPos, Vector2 iniVel) : position(iniPos), velocity(iniVel){
-	color = { (unsigned char)(rand() % 256), 
-		(unsigned char)(rand() % 256), 
-		(unsigned char)(rand() % 256), 
+	color = { (unsigned char)GetRandomValue(1,255),
+		(unsigned char) GetRandomValue(1,255),
+		(unsigned char) GetRandomValue(1,255),
 		255 };
 }
 
