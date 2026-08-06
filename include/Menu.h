@@ -1,5 +1,6 @@
 #pragma once
 #include "Scene.h"
+#include "EngGUI.h"
 namespace engPro {
     class Menu :
         public Scene
@@ -11,5 +12,8 @@ namespace engPro {
         void OnExit() override;
         void Update() override;
         void Draw() override;
+
+    private:
+        MenuUI* menuUI;
     };
 }

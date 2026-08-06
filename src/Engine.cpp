@@ -30,8 +30,7 @@ namespace engPro {
 	{
 		if (IsKeyPressed(KEY_M))
 			sceneManager.ChangeScene(&menuScene);
-		else if (IsKeyPressed(KEY_P))
-			sceneManager.ChangeScene(&playScene);
+		
 
 		sceneManager.Update();
 	}

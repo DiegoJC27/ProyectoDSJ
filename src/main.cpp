@@ -8,6 +8,8 @@ by Jeffery Myers is marked with CC0 1.0. To view a copy of this license, visit h
 */
 
 #include "Engine.h"
+#define RAYGUI_IMPLEMENTATION
+#include "raygui.h"
 
 int main ()
 {

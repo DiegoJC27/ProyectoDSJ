@@ -302,6 +302,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\Ball.h" />
+    <ClInclude Include="include\Canvas.h" />
+    <ClInclude Include="include\EngGUI.h" />
     <ClInclude Include="include\Engine.h" />
     <ClInclude Include="include\Menu.h" />
     <ClInclude Include="include\Play.h" />
@@ -312,6 +314,7 @@
   <ItemGroup>
     <ClCompile Include="include\SceneManager.cpp" />
     <ClCompile Include="src\Ball.cpp" />
+    <ClCompile Include="src\Canvas.cpp" />
     <ClCompile Include="src\Engine.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Menu.cpp" />

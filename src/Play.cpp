@@ -3,6 +3,11 @@ namespace engPro {
 	Play::Play(){
 		ballsVector = new std::vector<Ball*>();
 		ballQuantity = 100;
+	}
+	Play::~Play(){}
+	void Play::OnEnter()
+	{
+		ballsVector = new std::vector<Ball*>();
 
 		float curDeg = 0;
 		for (int i = 0; i < ballQuantity; i++) {
@@ -14,12 +19,12 @@ namespace engPro {
 			ballsVector->push_back(nBall);
 		}
 	}
-	Play::~Play(){}
-	void Play::OnEnter()
-	{
-	}
 	void Play::OnExit()
 	{
+		for (int i = ballQuantity -1; i >= 0; i--) {
+			delete(ballsVector->at(i));
+		}
+		delete(ballsVector);
 	}
 	void Play::Update()
 	{
