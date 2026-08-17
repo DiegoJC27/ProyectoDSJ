@@ -12,7 +12,9 @@ namespace engPro {
 			active = true;
 		}
 		void DrawGUI() override {	
-			GuiButton(Rectangle{ position.x, position.y - 60, (float)width, (float)height }, "Play");
+			if (GuiButton(Rectangle{ position.x, position.y - 60, (float)width, (float)height }, "Play")) {
+
+			}
 			GuiButton(Rectangle{ position.x, position.y, (float)width, (float)height }, "Options");
 			GuiButton(Rectangle{ position.x, position.y + 60, (float)width, (float)height }, "Exit");
 		}

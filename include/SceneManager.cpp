@@ -18,7 +18,6 @@ namespace engPro {
 		
 		if (curScene) {
 			curScene->OnExit();
-			//delete(curScene);
 		}
 		
 		curScene = newScene;

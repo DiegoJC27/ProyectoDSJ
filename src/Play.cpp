@@ -3,12 +3,13 @@ namespace engPro {
 	Play::Play(){
 		ballsVector = new std::vector<Ball*>();
 		ballQuantity = 100;
+
+
 	}
 	Play::~Play(){}
 	void Play::OnEnter()
 	{
 		ballsVector = new std::vector<Ball*>();
-
 		float curDeg = 0;
 		for (int i = 0; i < ballQuantity; i++) {
 			curDeg = (360 / ballQuantity) * i;
@@ -18,6 +19,10 @@ namespace engPro {
 			Ball* nBall = new Ball(Vector2{ (float)GetScreenWidth() / 2, (float)GetScreenHeight() / 2 }, vel);
 			ballsVector->push_back(nBall);
 		}
+
+		Listen("LoadScene");
+		Listen("PlayerDie");
+
 	}
 	void Play::OnExit()
 	{
@@ -31,6 +36,11 @@ namespace engPro {
 		for (int i = 0; i < ballQuantity; i++) {
 			ballsVector->at(i)->Update();
 		}
+
+		if (IsKeyPressed(KEY_L))
+			EventBus::GetInstance().Fire("LoadScene", { "LoadScene" });
+		else if (IsKeyPressed(KEY_D))
+			EventBus::GetInstance().Fire("PlayerDie", { "PlayerDie" });
 	}
 	void Play::Draw()
 	{
@@ -41,5 +51,13 @@ namespace engPro {
 			ballsVector->at(i)->Draw();
 		}
 		EndDrawing();
+	}
+	void Play::OnEvent(EventData eData)
+	{
+		if (eData.type == "LoadScene")
+			TraceLog(LOG_DEBUG, "Cargando");
+		else if(eData.type == "PlayerDie")
+			TraceLog(LOG_DEBUG, "Muerte");
+
 	}
 }

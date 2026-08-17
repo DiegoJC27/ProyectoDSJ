@@ -12,7 +12,7 @@ namespace engPro {
 		SearchAndSetResourceDir("resources");
 
 		//Pruebas para calse
-		sceneManager.ChangeScene(&menuScene);
+		sceneManager.ChangeScene(&playScene);
 	}
 	void Engine::Run()
 	{

@@ -2,9 +2,10 @@
 #include "Scene.h"
 #include "Ball.h"
 #include <vector>
+#include "EventBus.h"
 namespace engPro {
     class Play :
-        public Scene
+        public Scene, EventListener
     {
     public:
         Play();
@@ -13,6 +14,8 @@ namespace engPro {
         void OnExit() override;
         void Update() override;
         void Draw() override;
+
+        void OnEvent(EventData eData) override;
     private: 
         std::vector<Ball*>* ballsVector;
         int ballQuantity;
