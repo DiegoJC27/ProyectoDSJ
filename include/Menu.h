@@ -1,6 +1,7 @@
 #pragma once
 #include "Scene.h"
 #include "EngGUI.h"
+#include "EventBus.h"
 namespace engPro {
     class Menu :
         public Scene

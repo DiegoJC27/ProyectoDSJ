@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Canvas.h"
+#include "EventBus.h"
 
 namespace engPro {
 	class MenuUI : public Canvas {
@@ -13,7 +14,8 @@ namespace engPro {
 		}
 		void DrawGUI() override {	
 			if (GuiButton(Rectangle{ position.x, position.y - 60, (float)width, (float)height }, "Play")) {
-
+				TraceLog(LOG_DEBUG, "Play button clicked");
+				EventBus::GetInstance().Fire("StartGame", { "StartGame" });
 			}
 			GuiButton(Rectangle{ position.x, position.y, (float)width, (float)height }, "Options");
 			GuiButton(Rectangle{ position.x, position.y + 60, (float)width, (float)height }, "Exit");

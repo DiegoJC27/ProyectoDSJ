@@ -27,6 +27,10 @@
     <ClInclude Include="include\Canvas.h" />
     <ClInclude Include="include\EngGUI.h" />
     <ClInclude Include="include\EventBus.h" />
+    <ClInclude Include="include\Entity.h" />
+    <ClInclude Include="include\Ship.h" />
+    <ClInclude Include="include\EntityManager.h" />
+    <ClInclude Include="include\Bullet.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -39,6 +43,10 @@
     <ClCompile Include="src\Play.cpp" />
     <ClCompile Include="src\Canvas.cpp" />
     <ClCompile Include="src\EventBus.cpp" />
+    <ClCompile Include="src\Entity.cpp" />
+    <ClCompile Include="src\Ship.cpp" />
+    <ClCompile Include="src\EntityManager.cpp" />
+    <ClCompile Include="src\Bullet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\icon.ico">

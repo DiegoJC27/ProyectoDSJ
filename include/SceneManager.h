@@ -1,7 +1,7 @@
 #pragma once
 #include "Scene.h"
 namespace engPro {
-	class SceneManager
+	class SceneManager 
 	{
 	public:
 		void Update();

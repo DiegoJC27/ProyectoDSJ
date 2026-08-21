@@ -2,9 +2,8 @@
 namespace engPro {
 	Play::Play(){
 		ballsVector = new std::vector<Ball*>();
-		ballQuantity = 100;
-
-
+		ballQuantity = 20;
+		playerShip = nullptr;
 	}
 	Play::~Play(){}
 	void Play::OnEnter()
@@ -23,6 +22,9 @@ namespace engPro {
 		Listen("LoadScene");
 		Listen("PlayerDie");
 
+		playerShip = new Ship(Vector2{ (float)GetScreenWidth() / 2, (float)GetScreenHeight() / 2 });
+		entityManager.AddEntity(playerShip);
+
 	}
 	void Play::OnExit()
 	{
@@ -30,6 +32,7 @@ namespace engPro {
 			delete(ballsVector->at(i));
 		}
 		delete(ballsVector);
+		entityManager.Clear();
 	}
 	void Play::Update()
 	{
@@ -37,14 +40,19 @@ namespace engPro {
 			ballsVector->at(i)->Update();
 		}
 
-		if (IsKeyPressed(KEY_L))
+		entityManager.Update();
+
+		if (IsKeyPressed(KEY_L)) 
 			EventBus::GetInstance().Fire("LoadScene", { "LoadScene" });
+		
 		else if (IsKeyPressed(KEY_D))
 			EventBus::GetInstance().Fire("PlayerDie", { "PlayerDie" });
 	}
 	void Play::Draw()
 	{
 		BeginDrawing();
+
+		entityManager.Draw();
 
 		ClearBackground(DARKGREEN);
 		for (int i = 0; i < ballQuantity; i++) {
@@ -55,7 +63,7 @@ namespace engPro {
 	void Play::OnEvent(EventData eData)
 	{
 		if (eData.type == "LoadScene")
-			TraceLog(LOG_DEBUG, "Cargando");
+			TraceLog(LOG_DEBUG, "Loading");
 		else if(eData.type == "PlayerDie")
 			TraceLog(LOG_DEBUG, "Muerte");
 

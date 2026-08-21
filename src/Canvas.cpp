@@ -1,25 +1,29 @@
 #include "Canvas.h"
+#include "Entity.h"
 
-engPro::Canvas::Canvas() : position({ 0, 0 }), width(0), height(0), active(false) {}
+namespace engPro
+{
+	Canvas::Canvas() : position({ 0, 0 }), width(0), height(0), active(false) {}
 
-void engPro::Canvas::Draw() {
-	if(active) {
-		DrawGUI();
+	void Canvas::Draw() {
+		if (active) {
+			DrawGUI();
+		}
 	}
-}
 
-void engPro::Canvas::SetPosition(Vector2 pos)
-{
-	position = pos;
-}
+	void Canvas::SetPosition(Vector2 pos)
+	{
+		position = pos;
+	}
 
-void engPro::Canvas::SetActive(bool _active)
-{
-	active = _active;
-}
+	void Canvas::SetActive(bool _active)
+	{
+		active = _active;
+	}	
 
-void engPro::Canvas::SetSize(int wdt, int hgt)
-{
-	width = wdt;
-	height = hgt;
+	void Canvas::SetSize(int wdt, int hgt)
+	{
+		width = wdt;
+		height = hgt;
+	}
 }

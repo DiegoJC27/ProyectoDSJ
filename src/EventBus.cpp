@@ -43,5 +43,6 @@ void EventBus::Fire(const std::string& event, EventData eData)
 }
 
 void EventListener::Listen(const std::string& event) {
-
+	int id = EventBus::GetInstance().BindListener(event, this);
+	subscriptions.push_back({ event, id });
 }

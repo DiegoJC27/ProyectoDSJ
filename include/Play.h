@@ -3,6 +3,8 @@
 #include "Ball.h"
 #include <vector>
 #include "EventBus.h"
+#include "Ship.h"
+#include "EntityManager.h"
 namespace engPro {
     class Play :
         public Scene, EventListener
@@ -19,5 +21,8 @@ namespace engPro {
     private: 
         std::vector<Ball*>* ballsVector;
         int ballQuantity;
+
+		Ship* playerShip;
+		EntityManager entityManager;
     };
 }

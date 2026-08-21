@@ -5,11 +5,12 @@
 #include "Menu.h"
 #include "Play.h"
 #include "SceneManager.h"
+#include "EventBus.h"
 #include <iostream>
 #include <string>
 
 namespace engPro {
-	class Engine
+	class Engine : public EventListener
 	{
 	public:
 		Engine();
@@ -22,5 +23,8 @@ namespace engPro {
 		engPro::Menu menuScene;
 		engPro::Play playScene;
 		engPro::SceneManager sceneManager;
+
+		void OnEvent(EventData eData) override;
+		
 	};
 }

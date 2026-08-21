@@ -11,8 +11,11 @@ namespace engPro {
 
 		SearchAndSetResourceDir("resources");
 
+		Listen("StartGame");
+
+		SetTraceLogLevel(LOG_DEBUG);
 		//Pruebas para calse
-		sceneManager.ChangeScene(&playScene);
+		sceneManager.ChangeScene(&menuScene);
 	}
 	void Engine::Run()
 	{
@@ -37,5 +40,11 @@ namespace engPro {
 	void Engine::Draw()
 	{
 		sceneManager.Draw();
+	}
+	void Engine::OnEvent(EventData eData)
+	{		
+		if (eData.type == "StartGame") {
+			sceneManager.ChangeScene(&playScene);
+		}
 	}
 }
