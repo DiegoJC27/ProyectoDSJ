@@ -4,6 +4,8 @@ namespace engPro {
 		ballsVector = new std::vector<Ball*>();
 		ballQuantity = 20;
 		playerShip = nullptr;
+		
+
 	}
 	Play::~Play(){}
 	void Play::OnEnter()
@@ -17,6 +19,8 @@ namespace engPro {
 
 			Ball* nBall = new Ball(Vector2{ (float)GetScreenWidth() / 2, (float)GetScreenHeight() / 2 }, vel);
 			ballsVector->push_back(nBall);
+			bgm = ResourceManager::get().GetMusic("musicaAccion.wav");
+			PlayMusicStream(bgm);
 		}
 
 		Listen("LoadScene");
@@ -36,6 +40,7 @@ namespace engPro {
 	}
 	void Play::Update()
 	{
+		UpdateMusicStream(bgm);
 		for (int i = 0; i < ballQuantity; i++) {
 			ballsVector->at(i)->Update();
 		}

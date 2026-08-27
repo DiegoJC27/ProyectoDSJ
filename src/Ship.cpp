@@ -12,6 +12,8 @@ namespace engPro
 			bullet = new Bullet(position, Vector2{ 0.f, -1.f });
 			bulletPool.push_back(bullet);
 		}
+
+		PlaySound(shootSound);
 	}
 
 	Bullet* Ship::GetBulletFromPool()
@@ -28,13 +30,19 @@ namespace engPro
 	Ship::Ship(Vector2 iniPos)
 		: Entity(iniPos)
 	{
-		texture = LoadTexture("PlayerShip.png");
+		texture = ResourceManager::get().GetTexture("PlayerShip.png");
+		mFont = ResourceManager::get().GetFont("Sunset Palm - Script Trial.otf");
+		shootSound = ResourceManager::get().GetSound("rocket-launcher.wav");
 
 		for(int i = 0; i < iniPoolSize; i++) {
 			Bullet* newBullet = new Bullet(position, Vector2{ 0.f, -1.f });
 			newBullet->SetActive(false);
 			bulletPool.push_back(newBullet);
 		}
+	}
+
+	Ship::~Ship()
+	{
 	}
 
 	void Ship::Update()
@@ -51,7 +59,7 @@ namespace engPro
 		if (IsKeyDown(KEY_D)) {
 			position.x += speed;
 		}
-		if (IsKeyDown(KEY_SPACE)) {
+		if (IsKeyPressed(KEY_SPACE)) {
 			Shoot();
 		}
 		for (int i = 0; i < bulletPool.size(); i++)
@@ -70,5 +78,8 @@ namespace engPro
 				bulletPool[i]->Draw();
 			}
 		}
+
+		std::string poolSize = std::to_string(bulletPool.size());
+		DrawTextEx(mFont, poolSize.c_str(), {position.x, position.y + 50.f}, 24, 5, RAYWHITE);
 	}
 }

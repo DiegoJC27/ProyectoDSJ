@@ -311,6 +311,7 @@
     <ClInclude Include="include\EventBus.h" />
     <ClInclude Include="include\Menu.h" />
     <ClInclude Include="include\Play.h" />
+    <ClInclude Include="include\ResourceManager.h" />
     <ClInclude Include="include\resource_dir.h" />
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\SceneManager.h" />
@@ -328,6 +329,7 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Menu.cpp" />
     <ClCompile Include="src\Play.cpp" />
+    <ClCompile Include="src\ResourceManager.cpp" />
     <ClCompile Include="src\Ship.cpp" />
   </ItemGroup>
   <ItemGroup>

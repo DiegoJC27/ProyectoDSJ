@@ -2,7 +2,7 @@
 #include "Entity.h"
 #include "Bullet.h"
 #include <vector>
-
+#include <string>
 namespace engPro
 {
 	class Ship :
@@ -17,9 +17,12 @@ namespace engPro
 		void Shoot();
 		Bullet* GetBulletFromPool();
 
+		Font mFont;
+		Sound shootSound;
+
 	public:
 		Ship(Vector2 iniPos);
-		~Ship() = default;
+		~Ship();
 
 		void Update() override;
 

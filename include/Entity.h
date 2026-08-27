@@ -1,6 +1,8 @@
 #pragma once
 #include "raylib.h"
 #include <string>
+#include "ResourceManager.h"
+
 namespace engPro
 {
 	class Entity

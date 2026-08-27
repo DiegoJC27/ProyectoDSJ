@@ -5,6 +5,7 @@
 #include "EventBus.h"
 #include "Ship.h"
 #include "EntityManager.h"
+#include "ResourceManager.h"
 namespace engPro {
     class Play :
         public Scene, EventListener
@@ -24,5 +25,6 @@ namespace engPro {
 
 		Ship* playerShip;
 		EntityManager entityManager;
+        Music bgm;
     };
 }

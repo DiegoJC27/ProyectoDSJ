@@ -13,6 +13,8 @@ namespace engPro {
 
 		Listen("StartGame");
 
+		InitAudioDevice();
+
 		SetTraceLogLevel(LOG_DEBUG);
 		//Pruebas para calse
 		sceneManager.ChangeScene(&menuScene);
