@@ -27,5 +27,7 @@ namespace engPro
 		void Update() override;
 
 		void Draw() override;
+
+		void CheckBullCollisions(Entity* other);
 	};
 }

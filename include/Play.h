@@ -6,6 +6,9 @@
 #include "Ship.h"
 #include "EntityManager.h"
 #include "ResourceManager.h"
+#include "BallSpawner.h"
+
+
 namespace engPro {
     class Play :
         public Scene, EventListener
@@ -17,11 +20,11 @@ namespace engPro {
         void OnExit() override;
         void Update() override;
         void Draw() override;
+        void CheckCollisions();
 
         void OnEvent(EventData eData) override;
     private: 
-        std::vector<Ball*>* ballsVector;
-        int ballQuantity;
+        BallSpawner ballSpawner;
 
 		Ship* playerShip;
 		EntityManager entityManager;

@@ -2,6 +2,10 @@
 namespace engPro {
 	engPro::ResourceManager::ResourceManager()
 	{
+		defaultFont = GetFontDefault();
+		Image img = GenImageColor(2, 2, MAGENTA);
+		//missingTexture = (img);
+		UnloadImage(img);
 	}
 	engPro::ResourceManager::~ResourceManager()
 	{

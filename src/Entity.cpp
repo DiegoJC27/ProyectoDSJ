@@ -1,9 +1,11 @@
 #include "Entity.h"
 namespace engPro{
-	Entity::Entity(Vector2 iniPos)
+	Entity::Entity(Vector2 iniPos, float wdt)
 	{
 		position = iniPos;
 		active = true;
+		width = wdt;
+		collider = new SphereCollider(position, width / 2);
 	}
 	void Entity::Draw()
 	{
@@ -11,7 +13,9 @@ namespace engPro{
 			TraceLog(LOG_WARNING, "Entity texture is null. Cannot draw.");
 			return;
 		}
-		DrawTextureEx(texture, position, 0.f, 1.f, WHITE);
+		DrawTexture(texture, position.x - width/2 , position.y - width/2 , WHITE);
+		if (debugDrawCollision)
+			collider->DebugDraw();
 	}
 	
 	void Entity::SetPosition(Vector2 pos)
@@ -30,5 +34,9 @@ namespace engPro{
 	bool Entity::IsActive()
 	{
 		return active;
+	}
+	void Entity::Collide()
+	{
+		SetActive(false);
 	}
 }

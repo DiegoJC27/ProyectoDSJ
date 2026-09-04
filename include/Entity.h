@@ -2,6 +2,7 @@
 #include "raylib.h"
 #include <string>
 #include "ResourceManager.h"
+#include "SphereCollider.h"
 
 namespace engPro
 {
@@ -10,10 +11,12 @@ namespace engPro
 	protected:
 		Vector2 position;
 		bool active;
+		bool debugDrawCollision{ true };
+		float width;
 		Texture2D texture;
 
 	public:
-		Entity(Vector2 iniPos);
+		Entity(Vector2 iniPos, float width);
 		~Entity() = default;
 		virtual void Draw();
 		virtual void Update(){}
@@ -23,6 +26,9 @@ namespace engPro
 
 		void SetActive(bool active);
 		bool IsActive();
+		SphereCollider* collider;
+
+		virtual void Collide();
 	};
 
 }

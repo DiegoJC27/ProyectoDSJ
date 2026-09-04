@@ -28,7 +28,7 @@ namespace engPro
 	}
 
 	Ship::Ship(Vector2 iniPos)
-		: Entity(iniPos)
+		: Entity(iniPos, 15.f)
 	{
 		texture = ResourceManager::get().GetTexture("PlayerShip.png");
 		mFont = ResourceManager::get().GetFont("Sunset Palm - Script Trial.otf");
@@ -62,6 +62,8 @@ namespace engPro
 		if (IsKeyPressed(KEY_SPACE)) {
 			Shoot();
 		}
+		//collider->SetPosition(position.x + (width / 2), position.y - (width / 2));
+		collider->SetPosition(position);
 		for (int i = 0; i < bulletPool.size(); i++)
 		{
 			if(bulletPool[i]->IsActive()) {
@@ -81,5 +83,18 @@ namespace engPro
 
 		std::string poolSize = std::to_string(bulletPool.size());
 		DrawTextEx(mFont, poolSize.c_str(), {position.x, position.y + 50.f}, 24, 5, RAYWHITE);
+	}
+	void Ship::CheckBullCollisions(Entity* other)
+	{
+		for (int i = 0; i < bulletPool.size(); i++) {
+			if (!bulletPool[i]->IsActive())
+				continue;
+			
+			if (bulletPool[i]->collider->CheckCollision(other->collider)) {
+				TraceLog(LOG_DEBUG, "bala coll");
+				other->Collide();
+				bulletPool[i]->Collide();
+			}
+		}
 	}
 }

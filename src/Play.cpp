@@ -1,75 +1,56 @@
 #include "Play.h"
 namespace engPro {
 	Play::Play(){
-		ballsVector = new std::vector<Ball*>();
-		ballQuantity = 20;
-		playerShip = nullptr;
 		
-
+		playerShip = nullptr;
 	}
 	Play::~Play(){}
 	void Play::OnEnter()
 	{
-		ballsVector = new std::vector<Ball*>();
-		float curDeg = 0;
-		for (int i = 0; i < ballQuantity; i++) {
-			curDeg = (360 / ballQuantity) * i;
-			//TraceLog(LOG_DEBUG, "grado: " + curDeg + ", curBall: " + i);
-			Vector2 vel = { cos((curDeg * PI) / 180),-sin((curDeg * PI) / 180) };
+		ballSpawner.Init();
+		//PlayMusicStream(bgm);
 
-			Ball* nBall = new Ball(Vector2{ (float)GetScreenWidth() / 2, (float)GetScreenHeight() / 2 }, vel);
-			ballsVector->push_back(nBall);
-			bgm = ResourceManager::get().GetMusic("musicaAccion.wav");
-			PlayMusicStream(bgm);
-		}
-
-		Listen("LoadScene");
 		Listen("PlayerDie");
-
-		playerShip = new Ship(Vector2{ (float)GetScreenWidth() / 2, (float)GetScreenHeight() / 2 });
+		
+		playerShip = new Ship(Vector2{ (float)GetScreenWidth() / 2, ((float)GetScreenHeight() / 2) + 150});
 		entityManager.AddEntity(playerShip);
 
 	}
 	void Play::OnExit()
 	{
-		for (int i = ballQuantity -1; i >= 0; i--) {
-			delete(ballsVector->at(i));
-		}
-		delete(ballsVector);
 		entityManager.Clear();
 	}
 	void Play::Update()
 	{
-		UpdateMusicStream(bgm);
-		for (int i = 0; i < ballQuantity; i++) {
-			ballsVector->at(i)->Update();
-		}
+		//UpdateMusicStream(bgm);
 
 		entityManager.Update();
-
-		if (IsKeyPressed(KEY_L)) 
-			EventBus::GetInstance().Fire("LoadScene", { "LoadScene" });
+		ballSpawner.Update();
+		CheckCollisions();
 		
-		else if (IsKeyPressed(KEY_D))
-			EventBus::GetInstance().Fire("PlayerDie", { "PlayerDie" });
 	}
 	void Play::Draw()
 	{
 		BeginDrawing();
 
 		entityManager.Draw();
-
-		ClearBackground(DARKGREEN);
-		for (int i = 0; i < ballQuantity; i++) {
-			ballsVector->at(i)->Draw();
-		}
+		ballSpawner.Draw();
+		ClearBackground(DARKGRAY);
 		EndDrawing();
+	}
+	void Play::CheckCollisions()
+	{
+		for (int i = 0; i < ballSpawner.ballsVector->size(); i++) {
+			if (playerShip->collider->CheckCollision(ballSpawner.ballsVector->at(i)->collider)) {
+				EventBus::GetInstance().Fire("PlayerDie");
+				return;
+			}
+			playerShip->CheckBullCollisions(ballSpawner.ballsVector->at(i));
+		}
 	}
 	void Play::OnEvent(EventData eData)
 	{
-		if (eData.type == "LoadScene")
-			TraceLog(LOG_DEBUG, "Loading");
-		else if(eData.type == "PlayerDie")
+		if(eData.type == "PlayerDie")
 			TraceLog(LOG_DEBUG, "Muerte");
 
 	}
