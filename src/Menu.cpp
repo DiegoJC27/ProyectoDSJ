@@ -4,7 +4,7 @@ namespace engPro {
 	Menu::~Menu(){}
 	void engPro::Menu::OnEnter()
 	{
-		Vector2	pos = { GetScreenWidth() / 2 - 100, GetScreenHeight() / 2 - 100 };
+		Vector2	pos = { GetScreenWidth() / 2 - 100, GetScreenHeight() / 2 - 50 };
 		menuUI = new MenuUI(pos, 200, 50);							
 	}
 	void Menu::OnExit()
@@ -21,14 +21,12 @@ namespace engPro {
 	{
 		BeginDrawing();
 
-		ClearBackground(DARKGRAY);
+		ClearBackground(DARKBLUE);
 
-		DrawText("Menu(do)", 100, 100, 20, GOLD);
+		//DrawText("Menu(do)", 100, 100, 20, GOLD);
 
 		menuUI->Draw();
-		int btnActive = -1;
-		GuiMessageBox(Rectangle{ 100,150,160,120 }, "Ya valió", "O no", "corre", &btnActive);
-
+		
 		EndDrawing();
 	}
 	

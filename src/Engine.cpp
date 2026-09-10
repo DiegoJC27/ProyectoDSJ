@@ -11,13 +11,11 @@ namespace engPro {
 
 		SearchAndSetResourceDir("resources");
 
-		Listen("StartGame");
-
 		InitAudioDevice();
 
 		SetTraceLogLevel(LOG_DEBUG);
 		//Pruebas para calse
-		sceneManager.ChangeScene(&menuScene);
+		sceneManager.ChangeScene(&sceneManager.menuScene);
 	}
 	void Engine::Run()
 	{
@@ -32,10 +30,7 @@ namespace engPro {
 		CloseWindow();
 	}
 	void Engine::Update()
-	{
-		if (IsKeyPressed(KEY_M))
-			sceneManager.ChangeScene(&menuScene);
-		
+	{	
 
 		sceneManager.Update();
 	}
@@ -43,10 +38,5 @@ namespace engPro {
 	{
 		sceneManager.Draw();
 	}
-	void Engine::OnEvent(EventData eData)
-	{		
-		if (eData.type == "StartGame") {
-			sceneManager.ChangeScene(&playScene);
-		}
-	}
+	
 }

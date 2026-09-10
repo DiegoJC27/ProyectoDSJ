@@ -3,6 +3,7 @@
 #include "Ball.h"
 #include <vector>
 #include "EventBus.h"
+#include "ScoreManager.h"
 #include "Ship.h"
 #include "EntityManager.h"
 #include "ResourceManager.h"

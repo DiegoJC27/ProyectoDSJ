@@ -34,6 +34,8 @@ namespace engPro
 		mFont = ResourceManager::get().GetFont("Sunset Palm - Script Trial.otf");
 		shootSound = ResourceManager::get().GetSound("rocket-launcher.wav");
 
+		maxPosConstrain = { (float)GetScreenWidth() - width, (float)GetScreenHeight() - width };
+
 		for(int i = 0; i < iniPoolSize; i++) {
 			Bullet* newBullet = new Bullet(position, Vector2{ 0.f, -1.f });
 			newBullet->SetActive(false);
@@ -49,20 +51,32 @@ namespace engPro
 	{
 		if (IsKeyDown(KEY_W)) {
 			position.y -= speed;
+			if(position.y < 0) {
+				position.y = 0;
+			}	
 		}
 		if (IsKeyDown(KEY_S)) {
 			position.y += speed;
+			if(position.y > maxPosConstrain.y) {
+				position.y = maxPosConstrain.y;
+			}
 		}
 		if (IsKeyDown(KEY_A)) {
 			position.x -= speed;
+			if(position.x < 0) {
+				position.x = 0;
+			}
 		}
 		if (IsKeyDown(KEY_D)) {
 			position.x += speed;
+			if(position.x > maxPosConstrain.x) {
+				position.x = maxPosConstrain.x;
+			}
 		}
 		if (IsKeyPressed(KEY_SPACE)) {
 			Shoot();
 		}
-		//collider->SetPosition(position.x + (width / 2), position.y - (width / 2));
+		
 		collider->SetPosition(position);
 		for (int i = 0; i < bulletPool.size(); i++)
 		{
@@ -91,10 +105,14 @@ namespace engPro
 				continue;
 			
 			if (bulletPool[i]->collider->CheckCollision(other->collider)) {
-				TraceLog(LOG_DEBUG, "bala coll");
+				
 				other->Collide();
 				bulletPool[i]->Collide();
 			}
 		}
+	}
+	void Ship::PlayerDie()
+	{
+		EventBus::GetInstance().Fire("GameOver", { "GameOver" });
 	}
 }

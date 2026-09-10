@@ -11,7 +11,7 @@ namespace engPro
 	protected:
 		Vector2 position;
 		bool active;
-		bool debugDrawCollision{ true };
+		bool debugDrawCollision{ false };
 		float width;
 		Texture2D texture;
 

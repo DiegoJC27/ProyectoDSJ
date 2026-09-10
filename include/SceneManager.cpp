@@ -24,5 +24,21 @@ namespace engPro {
 		
 		curScene->OnEnter();
 	}
+
+	void SceneManager::OnEvent(EventData eData)
+	{
+		if (eData.type == "StartGame") {
+			ChangeScene(&playScene);
+		}
+		else if( eData.type == "GameOver") {
+			ChangeScene(&gameOverSceneScene);
+		}
+		else if (eData.type == "BackToMenu") {
+			ChangeScene(&menuScene);
+		}
+		else if (eData.type == "ExitGame") {
+			//WindowShouldClose();
+		}
+	}
 	
 }

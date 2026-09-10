@@ -310,12 +310,14 @@
     <ClInclude Include="include\Entity.h" />
     <ClInclude Include="include\EntityManager.h" />
     <ClInclude Include="include\EventBus.h" />
+    <ClInclude Include="include\GameOver.h" />
     <ClInclude Include="include\Menu.h" />
     <ClInclude Include="include\Play.h" />
     <ClInclude Include="include\ResourceManager.h" />
     <ClInclude Include="include\resource_dir.h" />
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\SceneManager.h" />
+    <ClInclude Include="include\ScoreManager.h" />
     <ClInclude Include="include\Ship.h" />
     <ClInclude Include="include\SphereCollider.h" />
   </ItemGroup>
@@ -329,10 +331,12 @@
     <ClCompile Include="src\Entity.cpp" />
     <ClCompile Include="src\EntityManager.cpp" />
     <ClCompile Include="src\EventBus.cpp" />
+    <ClCompile Include="src\GameOver.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Menu.cpp" />
     <ClCompile Include="src\Play.cpp" />
     <ClCompile Include="src\ResourceManager.cpp" />
+    <ClCompile Include="src\ScoreManager.cpp" />
     <ClCompile Include="src\Ship.cpp" />
     <ClCompile Include="src\SphereCollider.cpp" />
   </ItemGroup>

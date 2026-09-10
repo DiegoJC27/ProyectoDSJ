@@ -14,6 +14,7 @@ namespace engPro {
 		
 		playerShip = new Ship(Vector2{ (float)GetScreenWidth() / 2, ((float)GetScreenHeight() / 2) + 150});
 		entityManager.AddEntity(playerShip);
+		ScoreManager::Get().ResetScore();
 
 	}
 	void Play::OnExit()
@@ -35,6 +36,7 @@ namespace engPro {
 
 		entityManager.Draw();
 		ballSpawner.Draw();
+		ScoreManager::Get().DrawScore();
 		ClearBackground(DARKGRAY);
 		EndDrawing();
 	}
@@ -50,8 +52,8 @@ namespace engPro {
 	}
 	void Play::OnEvent(EventData eData)
 	{
-		if(eData.type == "PlayerDie")
-			TraceLog(LOG_DEBUG, "Muerte");
+		if (eData.type == "PlayerDie")
+			playerShip->PlayerDie();
 
 	}
 }

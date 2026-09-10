@@ -46,3 +46,11 @@ void EventListener::Listen(const std::string& event) {
 	int id = EventBus::GetInstance().BindListener(event, this);
 	subscriptions.push_back({ event, id });
 }
+
+void EventListener::StopListening()
+{
+	for(const auto& sub : subscriptions) {
+		EventBus::GetInstance().UnBindListener(sub.event, sub.id);
+	}
+	subscriptions.clear();
+}
