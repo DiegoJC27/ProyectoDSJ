@@ -19,9 +19,9 @@ namespace engPro {
 
 			Ball* nBall = new Ball(Vector2{ (float)GetScreenWidth() / 2, (float)GetScreenHeight() / 2 }, vel);
 			ballsVector->push_back(nBall);
-			bgm = ResourceManager::get().GetMusic("musicaAccion.wav");
-			PlayMusicStream(bgm);
 		}
+		bgm = ResourceManager::get().GetMusic("musicaAccion.wav");
+		PlayMusicStream(bgm);
 
 		Listen("LoadScene");
 		Listen("PlayerDie");
