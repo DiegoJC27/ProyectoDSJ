@@ -323,7 +323,6 @@
     <ClInclude Include="include\SphereCollider.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="include\SceneManager.cpp" />
     <ClCompile Include="src\Ball.cpp" />
     <ClCompile Include="src\BallSpawner.cpp" />
     <ClCompile Include="src\Bullet.cpp" />
@@ -337,6 +336,7 @@
     <ClCompile Include="src\Menu.cpp" />
     <ClCompile Include="src\Play.cpp" />
     <ClCompile Include="src\ResourceManager.cpp" />
+    <ClCompile Include="src\SceneManager.cpp" />
     <ClCompile Include="src\ScoreManager.cpp" />
     <ClCompile Include="src\Ship.cpp" />
     <ClCompile Include="src\SphereCollider.cpp" />

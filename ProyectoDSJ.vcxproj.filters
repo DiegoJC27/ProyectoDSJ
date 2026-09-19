@@ -45,7 +45,6 @@
     <ClCompile Include="src\Ball.cpp" />
     <ClCompile Include="src\Engine.cpp" />
     <ClCompile Include="src\Menu.cpp" />
-    <ClCompile Include="include\SceneManager.cpp" />
     <ClCompile Include="src\Play.cpp" />
     <ClCompile Include="src\Canvas.cpp" />
     <ClCompile Include="src\EventBus.cpp" />
@@ -58,6 +57,7 @@
     <ClCompile Include="src\BallSpawner.cpp" />
     <ClCompile Include="src\GameOver.cpp" />
     <ClCompile Include="src\ScoreManager.cpp" />
+    <ClCompile Include="src\SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\icon.ico">
