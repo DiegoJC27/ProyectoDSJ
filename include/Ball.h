@@ -24,5 +24,7 @@ namespace engPro {
 		float speed{ 0 };
 		Vector2 startPos;
 		Color color;
+
+		Sound destroyedSound;
 	};
 }

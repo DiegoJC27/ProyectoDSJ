@@ -1,6 +1,7 @@
 #pragma once
 #include "Scene.h"
 #include "EngGUI.h"
+#include "ResourceManager.h"
 #include "EventBus.h"
 namespace engPro {
     class Menu :
@@ -16,5 +17,6 @@ namespace engPro {
 
     private:
         MenuUI* menuUI;
+        Music bgm;
     };
 }

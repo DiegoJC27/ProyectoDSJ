@@ -36,6 +36,7 @@
     <ClInclude Include="include\BallSpawner.h" />
     <ClInclude Include="include\GameOver.h" />
     <ClInclude Include="include\ScoreManager.h" />
+    <ClInclude Include="include\json.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">

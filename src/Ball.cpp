@@ -3,10 +3,8 @@
 namespace engPro
 {
 	Ball::Ball(Vector2 iniPos, float curDeg, float iniSpeed) : Entity(iniPos, 20) {
-		color = { (unsigned char)GetRandomValue(1,255),
-			(unsigned char)GetRandomValue(1,255),
-			(unsigned char)GetRandomValue(1,255),
-			255 };
+		texture = ResourceManager::get().GetTexture("Asteroide.png");
+		destroyedSound = ResourceManager::get().GetSound("asteroidDestroy.wav");
 		SetDirection(curDeg);
 		SetSpeed(iniSpeed);
 		startPos = iniPos;
@@ -26,13 +24,20 @@ namespace engPro
 
 	void Ball::Draw()
 	{
-		DrawCircle(position.x, position.y, 10.f, color);
+		if (texture.id == 0) {
+			TraceLog(LOG_WARNING, "Ball texture is null. Cannot draw.");
+			return;
+		}
+
+		DrawTextureEx(texture, { position.x - width / 2, position.y - width / 2 }, 0.f, 0.01f, WHITE);
+
 		if (debugDrawCollision)
 			collider->DebugDraw();
 	}
 	void Ball::Collide()
 	{
 		position = startPos;
+		PlaySound(destroyedSound);
 		collider->SetPosition(position);
 		SetDirection(GetRandomValue(0, 360));
 		EventBus::GetInstance().Fire("OnBallCollisioned");

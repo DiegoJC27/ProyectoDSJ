@@ -311,6 +311,7 @@
     <ClInclude Include="include\EntityManager.h" />
     <ClInclude Include="include\EventBus.h" />
     <ClInclude Include="include\GameOver.h" />
+    <ClInclude Include="include\json.hpp" />
     <ClInclude Include="include\Menu.h" />
     <ClInclude Include="include\Play.h" />
     <ClInclude Include="include\ResourceManager.h" />

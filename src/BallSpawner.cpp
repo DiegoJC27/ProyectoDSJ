@@ -5,7 +5,12 @@ namespace engPro {
 	{
 	}*/
 
-	void BallSpawner::Init() 
+	BallSpawner::BallSpawner()
+	{
+		ballsVector = nullptr;
+	}
+
+	void BallSpawner::Init()
 	{	
 		ballSpawnPoint = { (float)GetScreenWidth() / 2, (float)GetScreenHeight() / 2 };
 		ballsVector = new std::vector<Ball*>();
@@ -20,6 +25,12 @@ namespace engPro {
 	void BallSpawner::TurnOff()
 	{
 		StopListening();
+		for (int i = 0; i < ballsVector->size(); i++) {
+			delete ballsVector->at(i);
+		}
+		ballsVector->clear();
+		delete ballsVector;
+		ballsVector = nullptr;
 	}
 	void BallSpawner::Update() {
 		for (int i = 0; i < ballsVector->size(); i++) {
@@ -38,6 +49,7 @@ namespace engPro {
 
 		if(ballsVector->size() >= maxBallCount)
 			return;
+
 		Ball* nb = new Ball(ballSpawnPoint, curDeg + 5, ballCurSpeed);
 		curDeg += (360 / inicialBallQuant);
 		ballsVector->push_back(nb);
@@ -45,7 +57,6 @@ namespace engPro {
 	void BallSpawner::OnEvent(EventData data)
 	{
 		if (data.type == "OnBallCollisioned") {
-		TraceLog(LOG_DEBUG, "entra a ala func");
 			OnBallCollison();
 		}
 	}

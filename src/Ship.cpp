@@ -31,8 +31,8 @@ namespace engPro
 		: Entity(iniPos, 15.f)
 	{
 		texture = ResourceManager::get().GetTexture("PlayerShip.png");
-		mFont = ResourceManager::get().GetFont("Sunset Palm - Script Trial.otf");
-		shootSound = ResourceManager::get().GetSound("rocket-launcher.wav");
+		shootSound = ResourceManager::get().GetSound("playerShot.wav");
+		dieSound = ResourceManager::get().GetSound("playerDie.wav");
 
 		maxPosConstrain = { (float)GetScreenWidth() - width, (float)GetScreenHeight() - width };
 
@@ -94,9 +94,6 @@ namespace engPro
 				bulletPool[i]->Draw();
 			}
 		}
-
-		std::string poolSize = std::to_string(bulletPool.size());
-		DrawTextEx(mFont, poolSize.c_str(), {position.x, position.y + 50.f}, 24, 5, RAYWHITE);
 	}
 	void Ship::CheckBullCollisions(Entity* other)
 	{
@@ -113,6 +110,7 @@ namespace engPro
 	}
 	void Ship::PlayerDie()
 	{
+		PlaySound(dieSound);
 		EventBus::GetInstance().Fire("GameOver", { "GameOver" });
 	}
 }

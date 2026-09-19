@@ -1,9 +1,36 @@
 #include "ScoreManager.h"
+#include <fstream>
 
 engPro::ScoreManager::ScoreManager()
 {
+	char* path = LoadFileText("../resources/json/highscore.json");
+	
+	if (path == nullptr)
+	{
+		TraceLog(LOG_WARNING, "No se pudo cargar highscore.json");
+		highScore = 0;
+	}
+	else {
+		try		{
+			json data = json::parse(path);
+			if (data.contains("highscore") && data["highscore"].is_number())
+			{
+				highScore = data["highscore"].get<int>();
+			}
+			else {
+				TraceLog(LOG_WARNING, "no jalo");
+				highScore = 0;
+			}
+		}
+		catch (const std::exception& e)
+		{
+			TraceLog(LOG_ERROR, "Error parseando highscore.json: %s", e.what());
+			highScore = 0;
+		}
+		UnloadFileText(path);
+	}
+
 	curScore = 0;
-	highScore = 0;
 	Listen("OnBallCollisioned");
 }
 
@@ -22,13 +49,27 @@ void engPro::ScoreManager::UpdateScore()
 	curScore += 100;
 	if (curScore > highScore) {
 		highScore = curScore;
+		SaveHighScore();
 	}
 }
 
 void engPro::ScoreManager::OnEvent(EventData eData)
 {
-	TraceLog(LOG_DEBUG, "entra en scoreManager");
 	if(eData.type == "OnBallCollisioned") {
 		UpdateScore();
 	}
+}
+
+void engPro::ScoreManager::SaveHighScore()
+{
+	json data;
+
+	data["highscore"] = highScore;
+
+	std::string jsonText = data.dump(4);
+
+	SaveFileText(
+		"../resources/json/highscore.json",
+		jsonText.data()
+	);
 }

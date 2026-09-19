@@ -18,8 +18,8 @@ namespace engPro
 		void Shoot();
 		Bullet* GetBulletFromPool();
 
-		Font mFont;
 		Sound shootSound;
+		Sound dieSound;
 
 		Vector2 maxPosConstrain{0,0};
 	public:

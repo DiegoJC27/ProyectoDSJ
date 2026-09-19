@@ -7,7 +7,7 @@ namespace engPro {
 	class BallSpawner : EventListener
 	{
 	public:
-		BallSpawner() = default;
+		BallSpawner();
 		~BallSpawner() = default;
 
 		void Init();
@@ -17,6 +17,7 @@ namespace engPro {
 
 		void OnBallCollison();
 		std::vector<Ball*>* ballsVector;
+
 	private:
 		float curDeg{ 0 };
 		int inicialBallQuant{ 10 };
