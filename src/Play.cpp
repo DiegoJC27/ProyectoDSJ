@@ -3,14 +3,14 @@ namespace engPro {
 	Play::Play(){
 		
 		playerShip = nullptr;
-		//bgm = ResourceManager::get().GetMusic("playBGM.wav");
 	}
 	Play::~Play(){}
 
 	void Play::OnEnter()
 	{
 		ballSpawner.Init();
-		//PlayMusicStream(bgm);
+		bgm = ResourceManager::get().GetMusic("playBGM.wav");
+		PlayMusicStream(bgm);
 
 		Listen("PlayerDie");
 		
@@ -21,14 +21,14 @@ namespace engPro {
 	}
 	void Play::OnExit()
 	{
-		//StopMusicStream(bgm);
+		StopMusicStream(bgm);
 		entityManager.Clear();
 		delete playerShip;
 		playerShip = nullptr;
 	}
 	void Play::Update()
 	{
-		//UpdateMusicStream(bgm);
+		UpdateMusicStream(bgm);
 
 		entityManager.Update();
 		ballSpawner.Update();

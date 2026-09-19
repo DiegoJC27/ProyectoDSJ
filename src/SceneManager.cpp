@@ -37,7 +37,7 @@ namespace engPro {
 			ChangeScene(&menuScene);
 		}
 		else if (eData.type == "ExitGame") {
-			//WindowShouldClose();
+			//CloseWindow();
 		}
 	}
 	
