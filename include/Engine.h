@@ -5,11 +5,12 @@
 
 #include "SceneManager.h"
 #include "ScoreManager.h"
+#include "EventBus.h"
 #include <iostream>
 #include <string>
 
 namespace engPro {
-	class Engine
+	class Engine : public EventListener
 	{
 	public:
 		Engine();
@@ -22,6 +23,7 @@ namespace engPro {
 		
 		SceneManager sceneManager;			
 		ScoreManager scoreManager;
-		
+		bool shouldCloseWindow{ false };
+		void OnEvent(EventData event) override;
 	};
 }

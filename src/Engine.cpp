@@ -14,12 +14,14 @@ namespace engPro {
 		InitAudioDevice();
 
 		SetTraceLogLevel(LOG_DEBUG);
-		//Pruebas para calse
+
+		Listen("ExitGame");
+
 		sceneManager.ChangeScene(&sceneManager.menuScene);
 	}
 	void Engine::Run()
 	{
-		while (!WindowShouldClose())
+		while (!WindowShouldClose() && !shouldCloseWindow)
 		{
 			Update();
 			Draw();
@@ -27,6 +29,7 @@ namespace engPro {
 	}
 	void Engine::ShutDown()
 	{
+		StopListening();
 		CloseWindow();
 	}
 	void Engine::Update()
@@ -37,6 +40,13 @@ namespace engPro {
 	void Engine::Draw()
 	{
 		sceneManager.Draw();
+	}
+
+	void Engine::OnEvent(EventData event)
+	{
+		if (event.type == "ExitGame") {
+			shouldCloseWindow = true;
+		}
 	}
 	
 }
