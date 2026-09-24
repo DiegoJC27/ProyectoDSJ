@@ -310,6 +310,7 @@
     <ClInclude Include="include\Entity.h" />
     <ClInclude Include="include\EntityManager.h" />
     <ClInclude Include="include\EventBus.h" />
+    <ClInclude Include="include\GameManager.h" />
     <ClInclude Include="include\GameOver.h" />
     <ClInclude Include="include\json.hpp" />
     <ClInclude Include="include\Menu.h" />
@@ -318,7 +319,6 @@
     <ClInclude Include="include\resource_dir.h" />
     <ClInclude Include="include\Scene.h" />
     <ClInclude Include="include\SceneManager.h" />
-    <ClInclude Include="include\ScoreManager.h" />
     <ClInclude Include="include\Ship.h" />
     <ClInclude Include="include\SphereCollider.h" />
   </ItemGroup>
@@ -328,9 +328,9 @@
     <ClCompile Include="src\Engine\Entity.cpp" />
     <ClCompile Include="src\Engine\EntityManager.cpp" />
     <ClCompile Include="src\Engine\EventBus.cpp" />
+    <ClCompile Include="src\Engine\GameManager.cpp" />
     <ClCompile Include="src\Engine\ResourceManager.cpp" />
     <ClCompile Include="src\Engine\SceneManager.cpp" />
-    <ClCompile Include="src\Engine\ScoreManager.cpp" />
     <ClCompile Include="src\Engine\SphereCollider.cpp" />
     <ClCompile Include="src\GameplayElements\Ball.cpp" />
     <ClCompile Include="src\GameplayElements\BallSpawner.cpp" />

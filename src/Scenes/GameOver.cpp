@@ -34,7 +34,7 @@ namespace engPro
 		ClearBackground(DARKGRAY);
 
 		gameOverUI->Draw();
-		ScoreManager::Get().DrawScore();
+		GameManager::Get().DrawScore();
 
 		EndDrawing();
 	}

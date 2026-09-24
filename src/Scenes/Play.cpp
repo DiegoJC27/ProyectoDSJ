@@ -17,7 +17,7 @@ namespace engPro {
 
 		playerShip = new Ship(Vector2{ (float)GetScreenWidth() / 2, ((float)GetScreenHeight() / 2) + 150 });
 		entityManager.AddEntity(playerShip);
-		ScoreManager::Get().ResetScore();
+		GameManager::Get().ResetScore();
 
 		//InitiBulPool
 		bulletPool = new std::vector<Bullet*>();
@@ -77,7 +77,7 @@ namespace engPro {
 		ClearBackground(BLACK);
 
 		entityManager.Draw();
-		ScoreManager::Get().DrawScore();
+		GameManager::Get().DrawScore();
 		EndDrawing();
 	}
 	void Play::CheckCollisions()
@@ -138,7 +138,7 @@ namespace engPro {
 	//Asteroids
 	void Play::OnBallCollison()
 	{
-		ScoreManager::Get().UpdateScore();
+		GameManager::Get().UpdateScore();
 
 		ballCurSpeed += plusBallSpeed;
 		if (ballCurSpeed > ballMaxSpeed)

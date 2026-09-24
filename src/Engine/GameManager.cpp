@@ -1,7 +1,7 @@
-#include "ScoreManager.h"
+#include "GameManager.h"
 #include <fstream>
 
-engPro::ScoreManager::ScoreManager()
+engPro::GameManager::GameManager()
 {
 	char* path = LoadFileText("../resources/json/highscore.json");
 	
@@ -34,17 +34,17 @@ engPro::ScoreManager::ScoreManager()
 	Listen("OnBallCollisioned");
 }
 
-engPro::ScoreManager::~ScoreManager()
+engPro::GameManager::~GameManager()
 {
 }
 
-void engPro::ScoreManager::DrawScore()
+void engPro::GameManager::DrawScore()
 {
 	DrawText(TextFormat("Highest Score: %i", highScore), 10, 10, 20, WHITE);
 	DrawText(TextFormat("Current Score: %i", curScore), 10, 30, 20, WHITE);
 }
 
-void engPro::ScoreManager::UpdateScore()
+void engPro::GameManager::UpdateScore()
 {
 	curScore += 100;
 	if (curScore > highScore) {
@@ -53,14 +53,14 @@ void engPro::ScoreManager::UpdateScore()
 	}
 }
 
-void engPro::ScoreManager::OnEvent(EventData eData)
+void engPro::GameManager::OnEvent(EventData eData)
 {
 	if(eData.type == "OnBallCollisioned") {
 		UpdateScore();
 	}
 }
 
-void engPro::ScoreManager::SaveHighScore()
+void engPro::GameManager::SaveHighScore()
 {
 	json data;
 

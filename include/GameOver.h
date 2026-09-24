@@ -1,7 +1,7 @@
 #pragma once
 #include "Scene.h"
 #include "EngGUI.h"
-#include "ScoreManager.h"
+#include "GameManager.h"
 #include "EventBus.h"
 namespace engPro {
     class GameOver :

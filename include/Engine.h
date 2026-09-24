@@ -4,7 +4,7 @@
 #include "resource_dir.h"	// utility header for SearchAndSetResourceDir
 
 #include "SceneManager.h"
-#include "ScoreManager.h"
+#include "GameManager.h"
 #include "EventBus.h"
 #include <iostream>
 #include <string>
@@ -21,8 +21,7 @@ namespace engPro {
 		void Update();
 		void Draw();
 		
-		SceneManager sceneManager;			
-		ScoreManager scoreManager;
+		SceneManager sceneManager;
 		bool shouldCloseWindow{ false };
 		void OnEvent(EventData event) override;
 	};

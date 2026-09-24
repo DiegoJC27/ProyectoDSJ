@@ -7,18 +7,18 @@ using json = nlohmann::json;
 
 namespace engPro
 {
-    class ScoreManager :
+    class GameManager :
         public EventListener
     {
     public:
-        static ScoreManager& Get()
+        static GameManager& Get()
         {
-            static ScoreManager instance;
+            static GameManager instance;
             return instance;
         }
 
-        ScoreManager();
-        ~ScoreManager();
+        GameManager();
+        ~GameManager();
 
         void DrawScore();
         void UpdateScore();

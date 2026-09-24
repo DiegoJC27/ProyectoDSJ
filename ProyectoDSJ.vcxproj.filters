@@ -35,8 +35,8 @@
     <ClInclude Include="include\SphereCollider.h" />
     <ClInclude Include="include\BallSpawner.h" />
     <ClInclude Include="include\GameOver.h" />
-    <ClInclude Include="include\ScoreManager.h" />
     <ClInclude Include="include\json.hpp" />
+    <ClInclude Include="include\GameManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -56,8 +56,8 @@
     <ClCompile Include="src\Engine\EventBus.cpp" />
     <ClCompile Include="src\Engine\ResourceManager.cpp" />
     <ClCompile Include="src\Engine\SceneManager.cpp" />
-    <ClCompile Include="src\Engine\ScoreManager.cpp" />
     <ClCompile Include="src\Engine\SphereCollider.cpp" />
+    <ClCompile Include="src\Engine\GameManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\icon.ico">
