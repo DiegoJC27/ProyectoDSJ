@@ -2,9 +2,9 @@
 #include "raylib.h"
 #include <vector>
 #include "resource_dir.h"	// utility header for SearchAndSetResourceDir
-#include "Menu.h"
-#include "Play.h"
+
 #include "SceneManager.h"
+#include "GameManager.h"
 #include "EventBus.h"
 #include <iostream>
 #include <string>
@@ -20,11 +20,9 @@ namespace engPro {
 	private:
 		void Update();
 		void Draw();
-		engPro::Menu menuScene;
-		engPro::Play playScene;
-		engPro::SceneManager sceneManager;
-
-		void OnEvent(EventData eData) override;
 		
+		SceneManager sceneManager;
+		bool shouldCloseWindow{ false };
+		void OnEvent(EventData event) override;
 	};
 }

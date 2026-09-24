@@ -28,5 +28,8 @@ namespace engPro {
 		std::string fontPath{ "fonts/" };
 		std::string soundPath{ "sounds/" };
 		std::string musicPath{ "music/" };
+
+		Font defaultFont;
+		Texture2D missingTexture;
 	};
 }

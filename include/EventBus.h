@@ -49,7 +49,7 @@ public:
 
 protected:
 	void Listen(const std::string& event);
-
+	void StopListening();
 private:
 	struct Subscrition {
 		std::string event;

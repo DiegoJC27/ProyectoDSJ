@@ -1,6 +1,7 @@
 #pragma once
 #include "Entity.h"
 #include "Bullet.h"
+#include "EventBus.h"
 #include <vector>
 #include <string>
 namespace engPro
@@ -9,7 +10,7 @@ namespace engPro
 		public Entity
 	{
 	private:
-		float speed{ 1.0f };
+		float speed{ 2.0f };
 
 		std::vector<Bullet*> bulletPool;				
 		int iniPoolSize{ 10 };
@@ -17,8 +18,10 @@ namespace engPro
 		void Shoot();
 		Bullet* GetBulletFromPool();
 
-		Font mFont;
 		Sound shootSound;
+		Sound dieSound;
+
+		Vector2 maxPosConstrain{0,0};
 
 	public:
 		Ship(Vector2 iniPos);
@@ -27,5 +30,7 @@ namespace engPro
 		void Update() override;
 
 		void Draw() override;
+
+		void PlayerDie();
 	};
 }
