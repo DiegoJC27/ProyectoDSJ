@@ -25,10 +25,31 @@ namespace engPro {
 
         void OnEvent(EventData eData) override;
     private: 
-        BallSpawner ballSpawner;
+       
 
 		Ship* playerShip;
+        std::vector<Bullet*>* bulletPool;
 		EntityManager entityManager;
         Music bgm;
+
+        //BULLETS
+        int iniPoolSize{ 10 };
+
+        void Shoot();
+        Bullet* GetBulletFromPool();
+
+        //ASTEROIDS
+        void OnBallCollison();
+
+        std::vector<Ball*>* ballsVector;
+        float curDeg{ 0 };
+        int inicialBallQuant{ 10 };
+        Vector2 ballSpawnPoint{ 0,0 };
+
+        float ballCurSpeed{ 1.f };
+        float const plusBallSpeed{ 0.15f };
+        float const ballMaxSpeed{ 3.f };
+        float const ballInitialSpeed{ 1.f };
+        int const maxBallCount{ 20 };
     };
 }

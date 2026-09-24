@@ -22,6 +22,7 @@ namespace engPro
 		Sound dieSound;
 
 		Vector2 maxPosConstrain{0,0};
+
 	public:
 		Ship(Vector2 iniPos);
 		~Ship();
@@ -29,8 +30,6 @@ namespace engPro
 		void Update() override;
 
 		void Draw() override;
-
-		void CheckBullCollisions(Entity* other);
 
 		void PlayerDie();
 	};

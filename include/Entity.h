@@ -9,13 +9,13 @@ namespace engPro
 	class Entity
 	{
 	protected:
-		Vector2 position;
 		bool active;
-		bool debugDrawCollision{ true };
+		bool debugDrawCollision{ false };
 		float width;
 		Texture2D texture;
 
 	public:
+		Vector2 position;
 		Entity(Vector2 iniPos, float width);
 		~Entity() = default;
 		virtual void Draw();

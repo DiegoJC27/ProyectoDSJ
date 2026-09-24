@@ -13,14 +13,14 @@ namespace engPro {
 
 	void EntityManager::Update() {
 		for (Entity* entity : entities) {
-			if (entity != nullptr)
+			if (entity != nullptr && entity->IsActive())
 				entity->Update();
 		}
 	}
 
 	void EntityManager::Draw() {
 		for (Entity* entity : entities) {
-			if (entity != nullptr)
+			if (entity != nullptr && entity->IsActive())
 				entity->Draw();
 		}
 	}

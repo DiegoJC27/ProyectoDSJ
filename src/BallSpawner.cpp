@@ -37,7 +37,7 @@ namespace engPro {
 			ballsVector->at(i)->Update();
 		}
 	}
-	void BallSpawner::OnBallCollison()
+	void BallSpawner::OnBallCollisonAAA()
 	{
 		ballCurSpeed += plusBallSpeed;
 		if (ballCurSpeed > ballMaxSpeed) 
@@ -57,7 +57,7 @@ namespace engPro {
 	void BallSpawner::OnEvent(EventData data)
 	{
 		if (data.type == "OnBallCollisioned") {
-			OnBallCollison();
+			OnBallCollisonAAA();
 		}
 	}
 	void BallSpawner::Draw() {

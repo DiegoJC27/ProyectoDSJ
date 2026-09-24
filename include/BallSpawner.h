@@ -15,7 +15,7 @@ namespace engPro {
 		void Draw();
 		void Update();
 
-		void OnBallCollison();
+		void OnBallCollisonAAA();
 		std::vector<Ball*>* ballsVector;
 
 	private:

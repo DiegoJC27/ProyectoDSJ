@@ -3,7 +3,8 @@ namespace engPro
 {
 	void Ship::Shoot()
 	{
-		Bullet* bullet = GetBulletFromPool();
+		EventBus::GetInstance().Fire("Shoot");
+		/*Bullet* bullet = GetBulletFromPool();
 		if (bullet != nullptr) {
 			bullet->SetPosition(position);
 			bullet->SetActive(true);
@@ -13,7 +14,7 @@ namespace engPro
 			bulletPool.push_back(bullet);
 		}
 
-		PlaySound(shootSound);
+		PlaySound(shootSound);*/
 	}
 
 	Bullet* Ship::GetBulletFromPool()
@@ -45,6 +46,7 @@ namespace engPro
 
 	Ship::~Ship()
 	{
+		
 	}
 
 	void Ship::Update()
@@ -74,40 +76,29 @@ namespace engPro
 			}
 		}
 		if (IsKeyPressed(KEY_SPACE)) {
-			Shoot();
+			PlaySound(shootSound);
+			EventBus::GetInstance().Fire("Shoot");
 		}
 		
 		collider->SetPosition(position);
-		for (int i = 0; i < bulletPool.size(); i++)
+		/*for (int i = 0; i < bulletPool.size(); i++)
 		{
 			if(bulletPool[i]->IsActive()) {
 				bulletPool[i]->Update();
 			}
-		}
+		}*/
 	}
 	void Ship::Draw()
 	{
 		Entity::Draw();
-		for (int i = 0; i < bulletPool.size(); i++)
+		/*for (int i = 0; i < bulletPool.size(); i++)
 		{
 			if(bulletPool[i]->IsActive()) {
 				bulletPool[i]->Draw();
 			}
-		}
+		}*/
 	}
-	void Ship::CheckBullCollisions(Entity* other)
-	{
-		for (int i = 0; i < bulletPool.size(); i++) {
-			if (!bulletPool[i]->IsActive())
-				continue;
-			
-			if (bulletPool[i]->collider->CheckCollision(other->collider)) {
-				
-				other->Collide();
-				bulletPool[i]->Collide();
-			}
-		}
-	}
+	
 	void Ship::PlayerDie()
 	{
 		PlaySound(dieSound);
