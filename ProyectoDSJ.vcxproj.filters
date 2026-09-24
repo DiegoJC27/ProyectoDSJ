@@ -42,22 +42,22 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Ball.cpp" />
-    <ClCompile Include="src\Engine.cpp" />
-    <ClCompile Include="src\Menu.cpp" />
-    <ClCompile Include="src\Play.cpp" />
-    <ClCompile Include="src\Canvas.cpp" />
-    <ClCompile Include="src\EventBus.cpp" />
-    <ClCompile Include="src\Entity.cpp" />
-    <ClCompile Include="src\Ship.cpp" />
-    <ClCompile Include="src\EntityManager.cpp" />
-    <ClCompile Include="src\Bullet.cpp" />
-    <ClCompile Include="src\ResourceManager.cpp" />
-    <ClCompile Include="src\SphereCollider.cpp" />
-    <ClCompile Include="src\BallSpawner.cpp" />
-    <ClCompile Include="src\GameOver.cpp" />
-    <ClCompile Include="src\ScoreManager.cpp" />
-    <ClCompile Include="src\SceneManager.cpp" />
+    <ClCompile Include="src\Scenes\GameOver.cpp" />
+    <ClCompile Include="src\Scenes\Menu.cpp" />
+    <ClCompile Include="src\Scenes\Play.cpp" />
+    <ClCompile Include="src\GameplayElements\Ball.cpp" />
+    <ClCompile Include="src\GameplayElements\BallSpawner.cpp" />
+    <ClCompile Include="src\GameplayElements\Bullet.cpp" />
+    <ClCompile Include="src\GameplayElements\Ship.cpp" />
+    <ClCompile Include="src\Engine\Canvas.cpp" />
+    <ClCompile Include="src\Engine\Engine.cpp" />
+    <ClCompile Include="src\Engine\Entity.cpp" />
+    <ClCompile Include="src\Engine\EntityManager.cpp" />
+    <ClCompile Include="src\Engine\EventBus.cpp" />
+    <ClCompile Include="src\Engine\ResourceManager.cpp" />
+    <ClCompile Include="src\Engine\SceneManager.cpp" />
+    <ClCompile Include="src\Engine\ScoreManager.cpp" />
+    <ClCompile Include="src\Engine\SphereCollider.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\icon.ico">
